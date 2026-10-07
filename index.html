@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Balanced Business Plan Subscription</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --primary: #1f6f5f;
+      --primary-dark: #155043;
+      --accent: #f4b41a;
+      --bg: #f5f7fa;
+      --text: #222;
+      --muted: #666;
+      --border: #e0e4ea;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+    }
+
+    /* Header / Hero */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+      gap: 32px;
+      align-items: flex-start;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-text h1 {
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+    }
+
+    .hero-text .subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .hero-text .badge {
+      display: inline-block;
+      background: rgba(31, 111, 95, 0.08);
+      color: var(--primary-dark);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      margin-bottom: 16px;
+    }
+
+    .hero-text p {
+      margin-bottom: 12px;
+    }
+
+    .hero-text small {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    /* Pricing / Form Card */
+
+    .product-card {
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+      padding: 20px 20px 24px;
+      border: 1px solid var(--border);
+    }
+
+    .product-card-header {
+      margin-bottom: 16px;
+    }
+
+    .product-card-header h2 {
+      font-size: 1.3rem;
+      margin-bottom: 4px;
+    }
+
+    .product-card-header .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .product-card-header .price {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    .product-card-header .per {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .product-card-header .note {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .product-card-section-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin: 16px 0 8px;
+    }
+
+    .select-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .select-row select {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+      background: #fafbff;
+    }
+
+    .form-group {
+      margin-bottom: 10px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      margin-bottom: 4px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+      background: #fafbff;
+    }
+
+    .inline-info {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 14px;
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: none;
+      background: var(--primary);
+      color: var(--white);
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    .cta-btn:hover {
+      background: var(--primary-dark);
+    }
+
+    .small-meta {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    /* Projects Section */
+
+    .section {
+      margin-top: 40px;
+    }
+
+    .section h2 {
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+    }
+
+    .section p {
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      background: var(--white);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .project-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--primary-dark);
+    }
+
+    .project-title {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .project-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .project-link {
+      margin-top: 4px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .projects-footer {
+      margin-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+    }
+
+    .projects-footer a {
+      font-weight: 600;
+    }
+
+    /* FAQ */
+
+    .faq {
+      margin-top: 40px;
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+    }
+
+    .faq h2 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+    }
+
+    .faq-item {
+      margin-bottom: 16px;
+    }
+
+    .faq-item h3 {
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .faq-item p {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* Footer note */
+
+    .footer-note {
+      margin-top: 32px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- Hero / Intro + Product Card -->
+    <section class="hero">
+      <div class="hero-text">
+        <span class="badge">Business Carbon Offset Plan (Monthly Subscription)</span>
+        <h1>Balanced Business Plan Subscription</h1>
+        <p class="subtitle">
+          Offset a standardized amount of your business’s carbon footprint each month based on employee count.
+        </p>
+        <p>
+          Most office or retail businesses generate up to 0.5 mT of carbon emissions per employee every month
+          from energy use, waste, travel, shipping, and commuting. This plan multiplies that estimate by your
+          employee count and automatically purchases verified carbon credits.
+        </p>
+        <p>
+          Credits come from a global portfolio of projects that restore natural climate resilience, protect
+          ecosystems, and reduce climate super-pollutants. You’ll receive a certificate of purchase and can
+          adjust your employee count or cancel anytime.
+        </p>
+        <small>
+          *0.5 metric ton CO₂e per employee per month is a standardized allocation used for this subscription.
+          Actual emissions vary by business activity, location, energy use, commuting, travel, shipping, and waste.
+        </small>
+      </div>
+
+      <aside class="product-card">
+        <div class="product-card-header">
+          <h2>Monthly Subscription</h2>
+          <div class="price-row">
+            <span class="price">$8.50</span>
+            <span class="per">per employee / month</span>
+          </div>
+          <p class="note">Quantity per employee per month: 0.5 mT CO₂e</p>
+        </div>
+
+        <div>
+          <div class="product-card-section-title">Currency</div>
+          <div class="select-row">
+            <select>
+              <option>United States dollar ($) - USD</option>
+              <option>Australian dollar ($) - AUD</option>
+              <option>Canadian dollar ($) - CAD</option>
+              <option>Hong Kong dollar ($) - HKD</option>
+              <option>Indonesian rupiah (Rp) - IDR</option>
+              <option>New Zealand dollar ($) - NZD</option>
+              <option>Pound sterling (£) - GBP</option>
+              <option>Singapore dollar ($) - SGD</option>
+              <option>Japanese yen (¥) - JPY</option>
+            </select>
+          </div>
+
+          <div class="product-card-section-title">Business details</div>
+
+          <div class="form-group">
+            <label for="business-name">Business name (optional)</label>
+            <input id="business-name" type="text" placeholder="Your business name" />
+          </div>
+
+          <div class="form-group">
+            <label for="employees"># of employees</label>
+            <input id="employees" type="number" min="1" placeholder="e.g. 25" />
+            <div class="inline-info">
+              Total monthly offset = employees × 0.5 mT CO₂e
+            </div>
+          </div>
+
+          <button class="cta-btn">Sign Up Now</button>
+          <div class="small-meta">
+            Payment will be made automatically each month. You can adjust employee count or cancel anytime.
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section">
+      <h2>Your purchase supports these projects</h2>
+      <p>
+        Online customers support a global portfolio of projects spanning North America, Asia, and South America,
+        including reforestation, REDD+, landfill gas capture, orphan oil well closure, industrial emission
+        reduction, and residential solar installation.
+      </p>
+
+      <div class="projects-grid">
+        <article class="project-card">
+          <div class="project-tag">REDD+</div>
+          <div class="project-title">Tahuamanu Amazon REDD Project</div>
+          <p class="project-desc">
+            Dedicated to preserving a significant portion of the Amazon rainforest and preventing deforestation.
+          </p>
+          <a href="#" class="project-link">Learn more →</a>
+        </article>
+
+        <article class="project-card">
+          <div class="project-tag">Reforestation</div>
+          <div class="project-title">Mexico Forest Restoration</div>
+          <p class="project-desc">
+            Promotes forest growth and long-term carbon sequestration through community-led restoration efforts.
+          </p>
+          <a href="#" class="project-link">Learn more →</a>
+        </article>
+
+        <article class="project-card">
+          <div class="project-tag">Industrial Emission Reduction</div>
+          <div class="project-title">A-Gas V14</div>
+          <p class="project-desc">
+            Mitigates greenhouse gas emissions by preventing the release of high-impact industrial refrigerants.
+          </p>
+          <a href="#" class="project-link">Learn more →</a>
+        </article>
+      </div>
+
+      <div class="projects-footer">
+        <span>Includes both carbon removal and reduction (avoidance) credits from nature-based and engineered solutions.</span>
+        <a href="#">View all projects →</a>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <h3>How do carbon offsets work?</h3>
+        <p>
+          Carbon offsets neutralize your footprint by funding projects like reforestation and landfill gas capture,
+          which remove or prevent greenhouse gas emissions. Each credit represents a verified reduction or removal
+          of emissions equivalent to a specific amount of CO₂e.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>What are the benefits of buying carbon offsets?</h3>
+        <p>
+          Offsets allow your business to be accountable for unavoidable emissions while you work on conservation
+          and efficiency. They demonstrate leadership, align with customer values, and help engage employees in
+          climate action.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>How do you ensure projects really make a difference?</h3>
+        <p>
+          Projects are independently verified under recognized standards and must pass “additionality” tests,
+          meaning your purchase is critical to making the reductions happen beyond business-as-usual scenarios.
+        </p>
+      </div>
+    </section>
+
+    <div class="footer-note">
+      This is a demo layout inspired by a business carbon offset subscription page. Customize copy, branding,
+      and links to match your own product.
+    </div>
+  </div>
+</body>
+</html>
